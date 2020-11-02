@@ -10,7 +10,8 @@ categories: ssh
 	1. `ssh-keygen`
 	This utility will prompt you to select a location for the keys, and it's generally a good idea to leave it as the default directory. If you already had an ssh key pair it'll ask you to overwrite it. It will ask you to enter a passphrase which is optional. If you enter the passphrase, you will have to enter it every time you use the ssh key pair
 
-	```milind@Milinds-MacBook-Air ~ % ssh-keygen
+	```
+	milind@Milinds-MacBook-Air ~ % ssh-keygen
 	Generating public/private rsa key pair.
 	Enter file in which to save the key (/Users/milind/.ssh/id_rsa):
 	Enter passphrase (empty for no passphrase):
@@ -30,19 +31,22 @@ categories: ssh
 	|  . o.X .  |
 	|  E  o |
 	| . |
-	+----[SHA256]-----+```
+	+----[SHA256]-----+
+	```
 
 	2. `ssh-copy-id username@remote_host`
 	Here it scans for your ssh public key that was created earlier (which is why leaving it in the default directory is a good idea) and when it finds it, it'll ask you to enter the password of the account.
 
-	```ssh-copy-id  milind.shah@192.168.1.17
+	```
+	ssh-copy-id  milind.shah@192.168.1.17
 	/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/Users/milind/.ssh/id_rsa.pub"
 	/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 	/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
 	milind.shah@192.168.1.17's password:
 	Number of key(s) added:  1
 	Now try logging into the machine, with: "ssh 'milind.shah@192.168.1.17'"
-	and check to make sure that only the key(s) you wanted were added.```
+	and check to make sure that only the key(s) you wanted were added.
+	```
 
 	3. Now login using ssh username@remote_host
 	You should be able to log in without entering your password!
