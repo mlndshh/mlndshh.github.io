@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Report for OpenGC"
+title:  "Analysis on ROCm"
 date:   2020-11-02 14:22:50 +0530
-categories: opengc
+categories: rocm
 ---
 AMD’s Radeon Open Compute platform (ROCm) is an open source development platform for HPC/Hyperscale-class computing. ROCm is AMD’s effort to get their market share in the DL, AI, Crypto Mining/HPC realm that is dominated by Nvidia. This has been the case because Nvidia had a monopoly over the GPU market at the time and had large cash reserves, which meant that they could afford to invest early in CUDA and get developers onboard.
 
