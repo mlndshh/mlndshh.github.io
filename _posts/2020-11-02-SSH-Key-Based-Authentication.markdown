@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to Configure SSH Key-Based Authentication on a Linux Server and set up VS Code for Remote Development"
+title:  "How to Configure SSH Key-Based Authentication and set up VS Code for Remote Development"
 date:   2020-11-02 17:20:50 +0530
 categories: ssh
 ---
