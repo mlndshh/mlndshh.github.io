@@ -26,7 +26,7 @@ Developers can use several languages alongside ROCm:
 
 ### Programming with HIP:
 
-![](https://lh4.googleusercontent.com/2FNdnw7iEo56S_3lSLvOF6MBSlpOz1sj2BXt9tSOqrxheKYkZ-oKQNIc_gqMI_dK1DRPVq2NTedIRSI6mhUK2yXEeSbH6J06BmSbSKuCuyW9dD_jjLa7Z2P77-MkjznCTRdbxHdu)
+![](/images/opengc/1.png)
 
 How HIP can compile code for Nvidia and AMD GPUs
 
@@ -59,7 +59,7 @@ Each application has what is called host code and device code. The host is the C
 
   
 
-![](https://lh3.googleusercontent.com/OORrH3JnJ_g3kdz_v80tHEGiuCfjmOm-vrfRB4KSfcLaKRbe7H9FqolkXp7cKMibvi65jyJ3ZQFdmkOz5rLjjBrUUlvQkXEyMHFXoPBzuNT_Yfu9acBqa6gBsSv7lbxocdyu8MUv)
+![](/images/opengc/2.png)
 
 Example of a 1D grid
 
@@ -119,7 +119,7 @@ When ROCm was initially released, AMD worked on OpenCL and HIP ports of CAFFE to
 
   
 
-![](https://lh4.googleusercontent.com/FCw9sRbX8PDIMFsjZ4W0nyA8RIgVyN9jneo7eg3541Dq9AEh0fqfY_PTYQ5NcPl1qFBWcQuUAGz4tqoSvI_uRrkRHrWn8CZtiSwHunKVAbwx6hqH6zLFvIabsBcdmwg-O05j4wa5)
+![](/images/opengc/3.png)
 
 Amount of work required to port to OpenCL vs HIP
 
