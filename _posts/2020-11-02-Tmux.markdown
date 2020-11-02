@@ -1,0 +1,56 @@
+---
+layout: post
+title:  "Tmux Quick Guide"
+date:   2020-11-02 17:20:50 +0530
+categories: tmux
+---
+**TMUX**
+Tmux will help you manage your terminal windows well and create multiple terminal panes in one window.
+
+**To Install:**
+`sudo apt-get install tmux` (Ubuntu and derivatives) or `brew install tmux` (Mac) should be sufficient.
+
+**To start Tmux:** `tmux`
+![](/images/tmux/1.png)
+
+## Splitting Panes
+### Left Right
+C-b (This means pressing control + b together) + (followed by) %
+![](images/tmux/split_pane_l_r.png)
+
+### Top Bottom
+C-b  + "
+![](images/tmux/split_top_bottom.png)
+
+## Switching Panes
+C-b + <arrow_key>
+
+## Closing Panes
+Ctrl+d (or typing exit)
+![](images/tmux/closing.png)
+
+## Creating Windows
+C-b + c
+![](images/tmux/new_window.png)
+
+The status bar shows you the status of your windows and which one you're on
+
+To switch between previous and next windows:
+C-b + p (previous) or C-b + n (next)
+
+## Session Handling
+
+To detach current session: C-b d
+for tmux to ask you which session to detach: C-b D
+
+You can type `tmux ls` to get the list of sessions
+![](images/tmux/sessions.png)
+
+
+To switch to a session,  Press C-b + s, and it will ask you which session to attach to.
+![](images/tmux/switching.png)
+
+One can rename sessions using `tmux rename-session -t 0 database` (replacing the number with something more meaningful)
+
+Sources:
+1. [https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)

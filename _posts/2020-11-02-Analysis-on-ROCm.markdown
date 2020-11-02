@@ -26,7 +26,7 @@ Developers can use several languages alongside ROCm:
 
 ### Programming with HIP:
 
-![](/images/opengc/1.png)
+![](/images/rocm/1.png)
 
 How HIP can compile code for Nvidia and AMD GPUs
 
@@ -59,7 +59,7 @@ Each application has what is called host code and device code. The host is the C
 
   
 
-![](/images/opengc/2.png)
+![](/images/rocm/2.png)
 
 Example of a 1D grid
 
@@ -119,7 +119,7 @@ When ROCm was initially released, AMD worked on OpenCL and HIP ports of CAFFE to
 
   
 
-![](/images/opengc/3.png)
+![](/images/rocm/3.png)
 
 Amount of work required to port to OpenCL vs HIP
 
