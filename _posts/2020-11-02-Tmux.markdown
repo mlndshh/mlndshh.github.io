@@ -11,6 +11,7 @@ Tmux will help you manage your terminal windows well and create multiple termina
 `sudo apt-get install tmux` (Ubuntu and derivatives) or `brew install tmux` (Mac) should be sufficient.
 
 **To start Tmux:** `tmux`
+
 ![](/images/tmux/1.png)
 
 ## Splitting Panes
@@ -20,6 +21,7 @@ C-b (This means pressing control + b together) + (followed by) %
 
 ### Top Bottom
 C-b  + "
+
 ![](/images/tmux/split_top_bottom.png)
 
 ## Switching Panes
@@ -27,10 +29,12 @@ C-b + <arrow_key>
 
 ## Closing Panes
 Ctrl+d (or typing exit)
+
 ![](/images/tmux/closing.png)
 
 ## Creating Windows
 C-b + c
+
 ![](/images/tmux/new_window.png)
 
 The status bar shows you the status of your windows and which one you're on
@@ -44,10 +48,12 @@ To detach current session: C-b d
 for tmux to ask you which session to detach: C-b D
 
 You can type `tmux ls` to get the list of sessions
+
 ![](/images/tmux/sessions.png)
 
 
 To switch to a session,  Press C-b + s, and it will ask you which session to attach to.
+
 ![](/images/tmux/switching.png)
 
 One can rename sessions using `tmux rename-session -t 0 database` (replacing the number with something more meaningful)
