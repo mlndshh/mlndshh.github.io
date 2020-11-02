@@ -16,22 +16,22 @@ Tmux will help you manage your terminal windows well and create multiple termina
 ## Splitting Panes
 ### Left Right
 C-b (This means pressing control + b together) + (followed by) %
-![](images/tmux/split_pane_l_r.png)
+![](/images/tmux/split_pane_l_r.png)
 
 ### Top Bottom
 C-b  + "
-![](images/tmux/split_top_bottom.png)
+![](/images/tmux/split_top_bottom.png)
 
 ## Switching Panes
 C-b + <arrow_key>
 
 ## Closing Panes
 Ctrl+d (or typing exit)
-![](images/tmux/closing.png)
+![](/images/tmux/closing.png)
 
 ## Creating Windows
 C-b + c
-![](images/tmux/new_window.png)
+![](/images/tmux/new_window.png)
 
 The status bar shows you the status of your windows and which one you're on
 
@@ -44,11 +44,11 @@ To detach current session: C-b d
 for tmux to ask you which session to detach: C-b D
 
 You can type `tmux ls` to get the list of sessions
-![](images/tmux/sessions.png)
+![](/images/tmux/sessions.png)
 
 
 To switch to a session,  Press C-b + s, and it will ask you which session to attach to.
-![](images/tmux/switching.png)
+![](/images/tmux/switching.png)
 
 One can rename sessions using `tmux rename-session -t 0 database` (replacing the number with something more meaningful)
 
