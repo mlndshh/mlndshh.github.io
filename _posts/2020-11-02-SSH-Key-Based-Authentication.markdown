@@ -4,7 +4,7 @@ title:  "How to Configure SSH Key-Based Authentication on a Linux Server and set
 date:   2020-11-02 17:20:50 +0530
 categories: ssh
 ---
-**How to Configure SSH Key-Based Authentication on a Linux Server and set up VS Code for Remote Development**
+**How to Configure SSH Key-Based Authentication and set up VS Code for Remote Development**
 ### Generate SSH Key pair on your local computer:
 1. `ssh-keygen`
 This utility will prompt you to select a location for the keys, and it's generally a good idea to leave it as the default directory. If you already had an ssh key pair it'll ask you to overwrite it. It will ask you to enter a passphrase which is optional. If you enter the passphrase, you will have to enter it every time you use the ssh key pair
