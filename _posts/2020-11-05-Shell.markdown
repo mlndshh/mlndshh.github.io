@@ -1,0 +1,211 @@
+---
+layout: post
+title:  "The Shell, pipes and GREP"
+date:   2020-11-05 20:15:50 +0530
+categories: dicom
+---
+## UNIX Shell, pipes, GREP
+[Reference](https://chsasank.github.io/classic_papers/unix-time-sharing-system.html)
+
+### The Shell
+From the paper:
+"The Shell is a command line interpreter: it reads lines typed by the user and interprets them as requests to execute other programs."
+
+A command line consists of the command name followed by arguments to the command.
+```
+command arg1 arg2 ... argn
+```
+The command name and arguments are separated into different strings. A file with name `command` is looked for (this may also be a path). If `command` is found, it is brought into core and executed. If file `command` cannot be found, the Shell prefixes `/bin/` to `command` and tries to find the file again.
+
+### Storing output to files / Taking input from files
+#### > - Storing output to files
+```
+ls
+```
+The command above will normally list the name of the files in the current directory.
+```
+ls > there
+```
+Now, the output of `ls` will be saved in a newly created file named `there`. Thus > there means _place output on `there`_.
+
+#### > - Taking input from files
+```
+ed
+```
+ed would normally enters the editor where the user would type in commands. However,
+
+```
+ed < script
+```
+interprets `script` as a file of editor commands; thus `<script` means, “take input from script.”
+
+### Filters - |
+Commands separated by vertical bars (pipes) causes the Shell to execute the commands and the output of each command is delivered as the input of the next command in sequence.
+
+For example,
+```
+ls | pr –2
+```
+
+`ls` lists the files in the current directory, and its output is passed onto `pr -2` (paginates its input with dated headings. The argument `–2` means double column.).
+
+Example Output:
+```
+milind@Milinds-MacBook-Air ~ % ls
+Applications  Movies  miniconda3
+Desktop  Music  mlndshh.github.io
+Documents  Pictures  opt
+Downloads  Public
+Library  django
+
+milind@Milinds-MacBook-Air ~ % ls | pr -2
+Nov  5 18:23 2020  Page 1
+Applications  Pictures
+Desktop  Public
+Documents  django
+Downloads  miniconda3
+Library  mlndshh.github.io
+Movies  opt
+Music
+```
+
+Another example:
+```
+milind@Milinds-MacBook-Air test % sort sort.txt
+1
+1
+1
+1
+1
+1
+1
+1
+2
+43
+5
+6
+7
+8
+9
+milind@Milinds-MacBook-Air test % sort sort.txt | uniq
+1
+2
+43
+5
+6
+7
+8
+9
+```
+### Command Separators - Multitasking
+
+1. Multiple commands in one line - `;`
+`ls ; ed`
+Instead of commands on different lines, they can be separated by semi-colons.
+
+2. Not waiting for a command to finish - `&`
+If a command is followed by `&`, the Shell will not wait for the command to finish before prompting again; instead, it is ready immediately to accept a new command. No matter how long a command takes, the Shell returns immediately. Multiple `&`s can be used together.
+
+3. Parentheses in command lines
+`(date; ls) >x &`
+Parentheses in the above case will putting the output of date and ls both in the file x. Parentheses are used to group a list of commands and execute them as if they were one unit.
+
+### Command Files
+The Shell in itself a command, and may be called recursively. Assume that file `tryout` contains 
+```
+as source
+mv a.out testprog
+testprog
+```
+`mv a.out testprog` renames a.out (assembler output, executable) to `testprog`, and then the resulting program named `testprog` is executed. When these lines are in `tryout`, the command 
+```
+sh < tryout
+```
+would cause the shell to execute the commands sequentially.
+
+### Grep
+Grep is used to search for strings in a given file or input. Regex can also be used with it.
+
+Sample File I'll be using for the examples below:
+```
+This is a sample file
+123 55788
+987643
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend nulla nec nisl accumsan, nec dignissim massa consequat. Nulla id leo id arcu volutpat ultricies et commodo est. Morbi luctus enim vitae laoreet lobortis. Mauris porttitor felis non eros volutpat, vel sagittis ex aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ex eu rutrum pellentesque. Mauris justo elit, vulputate quis felis vitae, aliquet posuere sapien. Phasellus eu ligula at diam mattis semper quis ac tellus. Curabitur ipsum felis, volutpat ut quam eu, suscipit laoreet ligula. Proin at hendrerit sem, nec cursus sem. Vestibulum ante ipsum primis in.
+test Test TEST
+TESTTTTT
+7655555
+```
+
+1. Case insensitive search - `grep -i`
+```
+milind@Milinds-MacBook-Air test % grep -i 'test' sort.txt
+test Test TEST
+TESTTTTT
+```
+2. Whole-word search - `grep -w`
+```
+milind@Milinds-MacBook-Air test % grep -w 'test' sort.txt
+test Test TEST
+```
+`-w` will only return results if the complete word matches the term.
+
+3. Inverted Search - `grep -v`
+This prints all the lines in the file except the ones including the search term.
+```
+milind@Milinds-MacBook-Air test % grep -v 'test' sort.txt
+This is a sample file
+123 55788
+987643
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend nulla nec nisl accumsan, nec dignissim massa consequat. Nulla id leo id arcu volutpat ultricies et commodo est. Morbi luctus enim vitae laoreet lobortis. Mauris porttitor felis non eros volutpat, vel sagittis ex aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ex eu rutrum pellentesque. Mauris justo elit, vulputate quis felis vitae, aliquet posuere sapien. Phasellus eu ligula at diam mattis semper quis ac tellus. Curabitur ipsum felis, volutpat ut quam eu, suscipit laoreet ligula. Proin at hendrerit sem, nec cursus sem. Vestibulum ante ipsum primis in.
+TESTTTTT
+7655555
+```
+
+4. Printing Additional trailing lines after a match - `grep -A <num>`
+```
+milind@Milinds-MacBook-Air test % cat sort.txt | grep -A 1 -i 'test'
+test Test TEST
+TESTTTTT
+7655555
+```
+
+5. Printing Additional leading lines after a match - `grep -B <num>`
+
+```
+milind@Milinds-MacBook-Air test % cat sort.txt | grep -B 1 -i 'testtt'
+test Test TEST
+TESTTTTT
+```
+
+6. Printing Additional trailing and leading lines after a match - `grep -C <num>`
+```
+milind@Milinds-MacBook-Air test % cat sort.txt | grep -C 1 -i 'testtt'
+test Test TEST
+TESTTTTT
+7655555
+```
+
+#### Using regex with grep
+To use regular expressions with grep, simply use grep along with the regex as a string argument.
+
+A few examples:
+
+1. \+ - used for one or more occurrences of a character
+```
+milind@Milinds-MacBook-Air test % cat sort.txt | grep '76[5+]'
+7655555
+```
+
+2. \^ - find occurrences that start with following characters
+```
+milind@Milinds-MacBook-Air test % cat sort.txt | grep '^t'
+test Test TEST
+```
+
+3. $ - find occurrences that start with preceding characters
+```
+milind@Milinds-MacBook-Air test % cat sort.txt | grep '643$'
+987643
+```
+
