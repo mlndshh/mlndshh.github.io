@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "DICOM, PACS"
+title:  "DICOM"
 date:   2020-11-05 17:30:50 +0530
 categories: dicom
 ---
