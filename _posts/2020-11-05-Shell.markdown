@@ -2,7 +2,7 @@
 layout: post
 title:  "The Shell, pipes and GREP"
 date:   2020-11-05 20:15:50 +0530
-categories: dicom
+categories: shell
 ---
 ## UNIX Shell, pipes, GREP
 [Reference](https://chsasank.github.io/classic_papers/unix-time-sharing-system.html)
