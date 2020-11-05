@@ -4,7 +4,7 @@ title:  "DICOM"
 date:   2020-11-05 17:30:50 +0530
 categories: dicom
 ---
-## DICOM, PACS etc.
+## DICOM
 [Reference](https://book.orthanc-server.com/dicom-guide.html#understanding-dicom-with-orthanc)
 DICOM stands for Digital Imaging and Communications in Medicine. 
 The DICOM standard can be divided into two parts,
