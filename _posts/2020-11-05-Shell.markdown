@@ -15,7 +15,26 @@ A command line consists of the command name followed by arguments to the command
 ```
 command arg1 arg2 ... argn
 ```
-The command name and arguments are separated into different strings. A file with name `command` is looked for (this may also be a path). If `command` is found, it is brought into core and executed. If file `command` cannot be found, the Shell prefixes `/bin/` to `command` and tries to find the file again.
+The command name and arguments are separated into different strings. A file with name `command` is looked for (this may also be a path). If `command` is found, it is brought into core and executed. When any command is typed into the shell, it will look for `command` in the paths stored in the environment variable called `$PATH`. 
+
+Here's an example of what my $PATH environment variable looks like:
+```
+milind@Milinds-MacBook-Air ~ % echo $PATH
+/Users/milind/opt/anaconda3/bin:/Users/milind/opt/anaconda3/condabin:/Users/milind/.pyenv/shims:/Users/milind/.nvm/versions/node/v10.23.0/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+```
+
+To edit your $PATH variable manually, you can edit the `.bash_profile` file:
+
+1. Open `.bash_file`
+```
+vi ~/.bash_profile 
+OR editor of your choice (code  ~/.bash_profile for instance)
+```
+
+2. Add new paths in the following format `export PATH=$PATH:/new/dir/location1`, save the file.
+
+3. To apply the changes, type `source ~/.bash_profile`
+
 
 ### Storing output to files / Taking input from files
 #### `>` - Storing output to files
