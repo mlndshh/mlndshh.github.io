@@ -6,7 +6,7 @@ categories: docker
 ---
 *I'm writing this tutorial in hopes that it will be a great starting point for anyone looking to learn Docker. This is essentially an amalgamation of whatever I gathered from various sources while trying to learn Docker.*
 
- # What is Docker?
+# What is Docker?
 Docker is a software platform that allows you to build, distribute and deploy applications in environments called containers. These containers essentially share only what's required from the operating system (the OS kernel for example) but otherwise run in isolation from one another.  
   
 What this means is that a specific docker container will run in the same way when used across multiple machines.
@@ -151,8 +151,8 @@ To create your own container image you need a file named`Dockerfile`. For now, j
 
 	Your container should now have started and be accessible at `http://localhost:3001/`! You should be able to make changes to the code and they should be reflected instantly as well.
 
-![](/images/dicom/terminal.jpg)
-![](/images/dicom/ss.jpg)
+![](/images/docker/terminal.jpg)
+![](/images/docker/ss.jpg)
 
 
 If for some reason you did not want hot-reloading, you can remove `-v ${PWD}:/app` and `-e CHOKIDAR_USEPOLLING=true` from the docker run command.
