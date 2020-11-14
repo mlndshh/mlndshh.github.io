@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Docker - how to create your own container image"
+title:  "Docker - How to Get Started"
 date:   2020-11-14 23:59:50 +0530
 categories: docker
 ---
