@@ -151,7 +151,7 @@ To create your own container image you need a file named`Dockerfile`. For now, j
 
 	Your container should now have started and be accessible at `http://localhost:3001/`! You should be able to make changes to the code and they should be reflected instantly as well.
 
-![](/images/docker/terminal.jpg)
+![](/images/docker/terminal.png)
 ![](/images/docker/ss.jpg)
 
 
