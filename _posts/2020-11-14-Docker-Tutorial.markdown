@@ -63,7 +63,7 @@ In Docker's [101 tutorial](https://www.docker.com/101-tutorial), they take you t
 
 I'll be using this [tiny react app](https://github.com/mlndshh/movie-app) I had made a while back for this tutorial. You can clone the same to follow along, or use an app of your own.
 
-1. **Creating the Dockerfile**
+### Creating the Dockerfile
 
 To create your own container image you need a file named`Dockerfile`. For now, just know that a `Dockerfile` is simply a file that consists of instructions that are used to create a container image.
  **Make a file named `Dockerfile` in the app's root with the following content:**
@@ -96,7 +96,7 @@ To create your own container image you need a file named`Dockerfile`. For now, j
 - `RUN` - `RUN` is used to execute commands at build time. These commands **won't** run when you make a container out of your image (i.e. use docker run)
 - `CMD` - This is used to execute commands when you start a container with said image. These commands do not run when the image is built.
 
-2. **Let us also create a `.dockerignore` file so that Docker will ignore the folders/files mentioned in `.dockerignore` during the build process. Create a new file called `.dockerignore` in the project's root with the following content:**
+### Let us also create a `.dockerignore` file so that Docker will ignore the folders/files mentioned in `.dockerignore` during the build process. Create a new file called `.dockerignore` in the project's root with the following content:
 	
 		node_modules
 		build
@@ -106,7 +106,7 @@ To create your own container image you need a file named`Dockerfile`. For now, j
 
 	We're choosing to ignore node_modules because we run yarn install inside the container image itself.
 
-3. **Let's build the container image using `docker build -t <app_name>:<label_name> .`**
+### Let's build the container image using `docker build -t <app_name>:<label_name> .`
 
 		dsds milind@Milinds-MacBook-Air movie-app % docker build -t movie-app:dev .
 		[+] Building 3.2s (11/11) FINISHED                                                                                                                                      
@@ -131,7 +131,7 @@ To create your own container image you need a file named`Dockerfile`. For now, j
 - `-t movie-app:dev` - `-t` is used to tag an image. The text following the colon works as a label (for eg. labelling different images as dev and prod)
 - `.` - is the location of the Dockerfile. `.` indicates that it should look for it in the current directory.
 
-4.  **Now that the image has been built, let us run it. Use the following:**
+### Now that the image has been built, let us run it. Use the following:
 
 		docker run \
 	    -it \
