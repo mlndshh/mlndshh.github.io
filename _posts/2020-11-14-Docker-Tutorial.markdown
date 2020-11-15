@@ -14,7 +14,7 @@ What this means is that a specific docker container will run in the same way whe
 ## What exactly is a container?
 A container is essentially another process on your machine. This process is isolated from all the other processes on the host machine. The isolation is achieved by using features that have been in Linux for a long time (such as kernel namespaces and cgroups).
   
-*I will come clean here and mention that the above explanation for the container was paraphrased right from Docker's 101 tutorial. [It's a great place to start from and I would recommend you to check it out and do it yourself before coming back here.](https://www.docker.com/101-tutorial). It'll take you through the basics of Docker and explain each step in the process. Quite a bit of what I mention below will be overlapping with content in the tutorial above.*
+*I will come clean here and mention that the above explanation for the container was paraphrased right from Docker's 101 tutorial. [It's a great place to start from and I would recommend you to check it out and do it yourself before coming back here.](https://www.docker.com/101-tutorial). It'll take you through the basics of Docker and explain each step in the process.*
 
 ## What exactly is a container image?
 Whenever a container is run it makes use of an isolated file system. This file system is provided by the container image. Since the image contains the container file system, it also contains everything needed to run an application, all its dependencies scripts configuration etc. The image also contains other configuration for the container, like environment variables and commands to run. You'll get a better idea of it as we start using Docker below.
