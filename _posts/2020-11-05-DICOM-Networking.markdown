@@ -108,7 +108,7 @@ Let's take each command one by one and use dcmtk to communicate to our orthanc s
             (base) milind@Milinds-MacBook-Air ohif % 
             ```
 	
-There was no output, let's add the `-v` flag and see what happens
+    There was no output, let's add the `-v` flag and see what happens
 
             ```
             (base) milind@Milinds-MacBook-Air ohif % echoscu -v localhost 4242
@@ -119,7 +119,7 @@ There was no output, let's add the `-v` flag and see what happens
             I: Releasing Association
             ```
 
-That's a good start! We're able to communicate to our orthanc server without issues. Let's move onto actually transferring data now.
+    That's a good start! We're able to communicate to our orthanc server without issues. Let's move onto actually transferring data now.
 
 2. **C-STORE** - [storescu](https://support.dcmtk.org/docs/storescu.html) - Sending a DICOM to the orthanc server
 
