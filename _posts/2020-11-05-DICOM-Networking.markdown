@@ -129,14 +129,14 @@ Let's take each command one by one and use dcmtk to communicate to our orthanc s
 
     ![](/images/dicom-networking/cstorebefore.png)
 
-        ```
-        (base) milind@Milinds-MacBook-Air ohif % storescu localhost 4242 demo1.dcm
-        W: DIMSE Warning: (STORESCU,ANY-SCP): sendMessage: unable to convert dataset from 'JPEG Lossless, Non-hierarchical, 1st Order Prediction' transfer syntax to 'Little Endian Explicit'
-        E: Store Failed, file: demo1.dcm:
-        E: 0006:020e DIMSE Failed to send message
-        E: Store SCU Failed: 0006:020e DIMSE Failed to send message
-        (base) milind@Milinds-MacBook-Air ohif % 
-        ```
+    ```
+    (base) milind@Milinds-MacBook-Air ohif % storescu localhost 4242 demo1.dcm
+    W: DIMSE Warning: (STORESCU,ANY-SCP): sendMessage: unable to convert dataset from 'JPEG Lossless, Non-hierarchical, 1st Order Prediction' transfer syntax to 'Little Endian Explicit'
+    E: Store Failed, file: demo1.dcm:
+    E: 0006:020e DIMSE Failed to send message
+    E: Store SCU Failed: 0006:020e DIMSE Failed to send message
+    (base) milind@Milinds-MacBook-Air ohif % 
+    ```
 
     Well, we get an error saying it cannot dataset from 'JPEG Lossless, Non-hierarchical, 1st Order Prediction' transfer syntax to 'Little Endian Explicit'. To fix this, let's add the `-xs` flag. From the docs, `-xs`is used to `propose default JPEG lossless TS and all uncompressed transfer syntaxes`. Let's try again.
 
@@ -168,6 +168,7 @@ Let's take each command one by one and use dcmtk to communicate to our orthanc s
 3. **C-FIND** - [findscu](https://support.dcmtk.org/docs/findscu.html) - Sending a query to find DICOMs
 
     This is where things get interesting. Look art this [findscu example](https://forum.dcmtk.org/viewtopic.php?t=116) from the dcmtk FAQs
+    
 
     ```
     findscu -v -P -k 0008,0052="IMAGE" -k 0010,0020="300019" -k 0020,000D="1.2.3.1" -k 0020,000E="1.2.3.2" -k 0008,0018="1.2.3.3" localhost 104
