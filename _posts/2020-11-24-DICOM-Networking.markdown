@@ -433,7 +433,7 @@ The more challenging bit is to get your Orthanc server to send a dicom to the ho
 
 `"store" : ["STORESCP", "host.docker.internal", 2001]`
 
-This is basically letting the Orthanc server know of AE Title `STORESCP` with the address `host.docker.internal` and port `2001`. This is because we'll be running the `storescp` command that will listen on port 2001. Let's try it out now!
+This is basically letting the Orthanc server know of AE Title `STORESCP` with the address `host.docker.internal` and port `2001`. This is because we'll be running the `storescp` command that will listen on port 2001. `host.docker.internal` is used to communicate with the host machine. Let's try it out now!
 
 We'll first start with `storescp` by using the command `storescp -v 2001` (`-v` is for verbose mode). After this we will use `movescu` by using `movescu -v -P -k 0008,0052="PATIENT" -k PatientID="CLU121161" -aem "STORESCP" localhost 4242`
 
