@@ -359,7 +359,7 @@ Before moving ahead, I'm adding these to my orthanc config's DicomModalities:
 
 You could alternatively only have one entry, and use that AE Title in every command using the `-aet` flag
 
- ### **C-Move** - [movescu](https://support.dcmtk.org/docs/movescu.html)
+### **C-Move** - [movescu](https://support.dcmtk.org/docs/movescu.html)
 
 The way C-Move works is slightly different. It involves three parties instead of two. The first is the one issuing the C-Move command, the second is the server where the dicom file to be retrieved exists and the third is the destination AE. The issuer and destination can be the same.
 
