@@ -124,13 +124,13 @@ Ensure that the Orthanc server is running, and we can run the command
 `echoscu localhost 4242`
 
 ```
-	(base) milind@Milinds-MacBook-Air ohif % echoscu localhost 4242 
-	(base) milind@Milinds-MacBook-Air ohif % 
+	$ echoscu localhost 4242 
+	$ 
 ```
 	
 There was no output, let's add the `-v` flag and see what happens
 
-	(base) milind@Milinds-MacBook-Air ohif % echoscu -v localhost 4242
+	$ echoscu -v localhost 4242
 	I: Requesting Association
 	I: Association Accepted (Max Send PDV: 16372)
 	I: Sending Echo Request (MsgID 1)
@@ -148,17 +148,17 @@ Sending a DICOM to the orthanc server
 
 ![](/images/dicom-networking/cstorebefore.png)
 
-	(base) milind@Milinds-MacBook-Air ohif % storescu localhost 4242 demo1.dcm
+	$ storescu localhost 4242 demo1.dcm
 	W: DIMSE Warning: (STORESCU,ANY-SCP): sendMessage: unable to convert dataset from 'JPEG Lossless, Non-hierarchical, 1st Order Prediction' transfer syntax to 'Little Endian Explicit'
 	E: Store Failed, file: demo1.dcm:
 	E: 0006:020e DIMSE Failed to send message
 	E: Store SCU Failed: 0006:020e DIMSE Failed to send message
-	(base) milind@Milinds-MacBook-Air ohif % 
+	$ 
 
 Well, we get an error saying it cannot dataset from 'JPEG Lossless, Non-hierarchical, 1st Order Prediction' transfer syntax to 'Little Endian Explicit'. To fix this, let's add the `-xs` flag. From the docs, `-xs`is used to `propose default JPEG lossless TS and all uncompressed transfer syntaxes`. Let's try again.
 
-	(base) milind@Milinds-MacBook-Air ohif % storescu -xs localhost 4242 demo1.dcm
-	(base) milind@Milinds-MacBook-Air ohif % 
+	$ storescu -xs localhost 4242 demo1.dcm
+	$ 
 
 No errors now! Let's check Orthanc again
 
@@ -166,7 +166,7 @@ No errors now! Let's check Orthanc again
 
 There it is, we have used C-STORE to send a dicom file to our Orthanc server! You can use `-v` here too.
 
-	(base) milind@Milinds-MacBook-Air ohif % storescu -xs -v localhost 4242 demo1.dcm
+	$ storescu -xs -v localhost 4242 demo1.dcm
 	I: checking input files ...
 	I: Requesting Association
 	I: Association Accepted (Max Send PDV: 16372)
@@ -187,7 +187,8 @@ This is where things get interesting. Look art this [findscu example](https://fo
 findscu -v -P -k 0008,0052="IMAGE" -k 0010,0020="300019" -k 0020,000D="1.2.3.1" -k 0020,000E="1.2.3.2" -k 0008,0018="1.2.3.3" localhost 104
 ```
 
-We will have to use the hex values for the DICOM tags!
+To begin with, we will use hex values for the DICOM tags!
+
 `-P` is to use patient root information model
 `-k` is to look for values according to the dicom tags. `0010,0020` is the patient ID for example. (`0010,0010` is patient name). You can also use dictionary names instead of the hex values
 
@@ -198,7 +199,7 @@ With this information, let's try this ourselves. Below is the study I'll try to 
 Let's run this simple command: `findscu -v -P -k "(0008,0052)=PATIENT" -k PatientID="CLU121161" localhost 4242`
 
 ```
-(base) milind@Milinds-MacBook-Air ohif % findscu -v -P -k "(0008,0052)=PATIENT" -k PatientID="CLU121161" localhost 4242
+$ findscu -v -P -k "(0008,0052)=PATIENT" -k PatientID="CLU121161" localhost 4242
 I: Requesting Association
 I: Association Accepted (Max Send PDV: 16372)
 I: Sending Find Request (MsgID 1)
@@ -237,7 +238,7 @@ It's rejecting our find request. This is because it needs the dicom modality inf
 It now knows to accept requests from AETitle `FINDSCU` (which is the default title used when findscu is used) with the given IP address and port. Let's restart the server and try again.
 
 ```
-(base) milind@Milinds-MacBook-Air ohif % findscu -v -P -k "(0008,0052)=PATIENT" -k PatientID="CLU121161" localhost 4242
+$ findscu -v -P -k "(0008,0052)=PATIENT" -k PatientID="CLU121161" localhost 4242
 I: Requesting Association
 I: Association Accepted (Max Send PDV: 16372)
 I: Sending Find Request (MsgID 1)
@@ -265,7 +266,7 @@ I: Releasing Association
 It works! `0008,0052` is the `Query/Retrieve Level` and needs to be specified each time. There are 4 possibilities (PATIENT, STUDY, SERIES or IMAGE) and it is used to target what level we would like to query at. In the example above, I am querying at patient level, looking for `PatientID="CLU121161`. While my query was a success, the information retrieved is not of much help. Let's change this.
 
 ```
-(base) milind@Milinds-MacBook-Air ohif % findscu -P -k "(0008,0052)=PATIENT" -k PatientID="CLU121161" -k PatientName localhost 4242 
+$ findscu -P -k "(0008,0052)=PATIENT" -k PatientID="CLU121161" -k PatientName localhost 4242 
 I: ---------------------------
 I: Find Response: 1 (Pending)
 I: 
@@ -281,7 +282,7 @@ I: (0010,0020) LO [CLU121161 ]                             #  10, 1 PatientID
 This is already better! I added `-k PatientName`, to find out what the Name of the patient with `PatientID="CLU121161"` is. Let's take it a step further:
 
 ```
-(base) milind@Milinds-MacBook-Air ohif % findscu -v -P -k "(0008,0052)=PATIENT" -k PatientID -k PatientName="A*" localhost 4242
+$ findscu -v -P -k "(0008,0052)=PATIENT" -k PatientID -k PatientName="A*" localhost 4242
 I: Requesting Association
 I: Association Accepted (Max Send PDV: 16372)
 I: Sending Find Request (MsgID 1)
@@ -311,7 +312,7 @@ I: Releasing Association
 This is sweet! If you didn't follow the command, I'm looking for patients with names starting with `A`, and getting the PatientID in return! Here's another example
 
 ```
-(base) milind@Milinds-MacBook-Air ohif % findscu -v -P -k 0008,0052="IMAGE" -k 0010,0020="CLU121161" -k 0020,000D="1.2.840.10008.1.500817.567467863.1560288934.406684597" -k 0020,000E="1.2.392.200036.9125.3.331555024156.64663542911.19447643" -k 0008,0018="1.2.392.200036.9125.9.0.235875605.654909696.849058840" -k Modality -k PerformedProcedureStepDescription -k PatientName -k PatientID localhost 4242
+$ findscu -v -P -k 0008,0052="IMAGE" -k 0010,0020="CLU121161" -k 0020,000D="1.2.840.10008.1.500817.567467863.1560288934.406684597" -k 0020,000E="1.2.392.200036.9125.3.331555024156.64663542911.19447643" -k 0008,0018="1.2.392.200036.9125.9.0.235875605.654909696.849058840" -k Modality -k PerformedProcedureStepDescription -k PatientName -k PatientID localhost 4242
 I: Requesting Association
 I: Association Accepted (Max Send PDV: 16372)
 I: Sending Find Request (MsgID 1)
@@ -478,17 +479,17 @@ Let's get ourselves familiar with dcmtk's `dump2dcm` [here](https://support.dcmt
 For Example:
 
 	```
-	(base) milind@Milinds-MacBook-Air ohif % cat test
+	$ cat test
 	# contents of file test
 	# request all images for the patient with ID=CLU121161
 
 	(0008,0052) CS [PATIENT]     # QueryRetrieveLevel
 	(0010,0020) LO [CLU121161]      # PatientID%      
 
-	(base) milind@Milinds-MacBook-Air ohif % dump2dcm test query.dcm
+	$ dump2dcm test query.dcm
 	W: output transfer syntax unknown, assuming --write-xfer-little
 
-	(base) milind@Milinds-MacBook-Air ohif % ls
+	$ ls
 	demo1.dcm		demo2.dcm		ohif-docker-compose	query.dcm		test
 	```
 
@@ -499,9 +500,9 @@ Command: `getscu [options] peer port [dcmfile-in...]`
 This one seems, straightforward, let's try it.
 
 ```
-(base) milind@Milinds-MacBook-Air ohif % ls
+$ ls
 demo1.dcm		demo2.dcm		ohif-docker-compose	query.dcm		test
-(base) milind@Milinds-MacBook-Air ohif % getscu -v localhost 4242 query.dcm
+$ getscu -v localhost 4242 query.dcm
 
 I: Requesting Association
 I: Association Accepted (Max Send PDV: 16372)
@@ -515,7 +516,7 @@ I:   Number of Completed Suboperations : 1
 I:   Number of Failed Suboperations    : 0
 I:   Number of Warning Suboperations   : 0
 I: Releasing Association
-(base) milind@Milinds-MacBook-Air ohif % ls
+$ ls
 CR.1.2.392.200036.9125.9.0.235875605.654909696.849058840	demo2.dcm							query.dcm
 demo1.dcm							ohif-docker-compose						test
 ```
