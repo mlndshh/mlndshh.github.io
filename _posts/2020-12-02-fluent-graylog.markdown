@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sending logs using Fluentd to Graylog"
-date:   2020-11-24 15:10:50 +0530
+date:   2020-12-02 17:15:50 +0530
 categories: dicom
 ---
 # Sending logs using Fluentd to Graylog
