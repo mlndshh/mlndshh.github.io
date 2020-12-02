@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Sending logs from fluentd to Graylog"
+title:  "Sending logs from Fluentd to Graylog"
 date:   2020-11-24 15:10:50 +0530
 categories: dicom
 ---
-# Sending logs from fluentd to Graylog
+# Sending logs from Fluentd to Graylog
 I was given the task to figure out sending logs received by [fluentd](https://www.fluentd.org/) to a [Graylog](https://www.graylog.org/) server. By the end of this post, what we'll have is a client-server fluentd setup. That is, a fluentd instance will receive logs (client side) and will send it to a server side fluentd instance. This server side fluentd will send hese logs to Graylog. Let's get started!
 
 ## Graylog
