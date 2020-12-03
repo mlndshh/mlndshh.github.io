@@ -15,7 +15,7 @@ Graylog is a platform that is used for log management. It has the ability to rec
 To setup Graylog on my system, I made a quick Docker Compose file:
 
 ```
-kversion: "3"
+version: "3"
 services:
   mongo:
     image: mongo:3
