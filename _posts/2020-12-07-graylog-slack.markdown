@@ -25,11 +25,11 @@ After creating the application, you will be redirected to its settings page wher
 ### Create an Incoming Webhook 
 Once you have enabled Incoming Webhooks, on the same page you can create a new webhook. Add a new webhook and it will ask you to choose a channel to post to as an app. Choose one and click on `Allow`. 
 
-![Create an Incoming Webhook](/images/graylog-slack/webhooks1.png)
+![Create an Incoming Webhook](/images/graylog-slack/webhook1.png)
 
 You will now be redirected back to the webhooks page with the newly created hook now present. You can test it out with the sample curl request they have given. We'll be using the URL it creates in Graylog.
 
-![Create an Incoming Webhook](/images/graylog-slack/webhooks2.png)
+![Create an Incoming Webhook](/images/graylog-slack/webhook2.png)
 
 We can now start setting up Graylog from here.
 
