@@ -1,13 +1,12 @@
 # Degree
-- degree: Bachelor of Arts, Human Rights
-  uni: Yale University
-  year: 2004 &mdash; 2008
+- degree: Bachelor of Engineering &mdash; Computer Engineering
+  uni: D. J. Sanghvi College of Engineering
+  year: 2017 &mdash; 2020
   awards:
-    - award: Summa Cumme Laude graduate
-  summary: If you had any meaningful roles at college, feel free to write about them here
+   - award: 9.47/10 CGPA
 
-- degree: High School Diploma
-  uni: Springfield High School
-  year: 2004
-  award: Most likely to succeed
-  summary: You can choose to have either a single or multiple awards
+- degree: Diploma &mdash; Computer Engineering
+  uni: Shri Bhagubhai Mafatlal Polytechnic
+  year: 2014 – 2017
+  awards:
+    - award: 87.80%

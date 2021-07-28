@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "DICOM"
+date:   2020-11-05 17:30:50 +0530
+categories: dicom
+---
+## DICOM
+[Reference](https://book.orthanc-server.com/dicom-guide.html#understanding-dicom-with-orthanc)
+DICOM stands for Digital Imaging and Communications in Medicine. 
+The DICOM standard can be divided into two parts,
+ - The DICOM File format
+ - The DICOM Network protocol
+
+## DICOM File Format
+
+The DICOM File format is essentially just like other image formats such as JPEG, PNG, etc, but it also includes some medical information along with the medical image itself.
+
+### Dicom Tags
+From the website, "The medical information encoded by a DICOM file is called a  **data set**  and takes the form of a key-value associative array. Each value can itself be a list of data sets (called a  **sequence**), leading to a hierarchical data structure that is much like a XML or JSON file."
+
+In DICOM terminology, each key mentioned above is called a DICOM Tag. Each tag is identified by 2 16-bit hexadecimal numbers (For eg, the birth date of a patient is associated with the DICOM tag (0x0010,  0x0030) ). These tags also have a CamelCased English name (PatientName for example). Each DICOM tag is asssociated with a data type, that is known as its value representation.
+
+The DICOM file format also specifies the set of DICOM tags that are mandatory or optional for each kind of imaging modality (CT, MR, NM, CBCT, PET...). The DICOM standard also allows vendors to introduce non-standard, **proprietary tags** for their own use. Proprietary tags can be identified by the fact that their first hexadecimal number is odd (e.g. `(0x0009,  0x0010)`).
+
+### Pixel Data/Image Data
+The image itself is associated with the DICOM tag `PixelData  (0x7fe0,  0x0010)`.  Most image formats can be used, however lossless compression should be used to avoid loss of medical information. In practice, the pixel data of most DICOM files circulating in hospitals is generally **uncompressed**.
+
+A DICOM image can be multi-frame, which means it encodes an array of different image frames.  This is used to encode uncompressed video sequences (often referred to as **cine** or **2D+t** images).
+
+### Model of the real world
+![](/images/dicom/model.png)
+
+The diagram above shows how a Patient might have a set of studies, which contains series,  which in turn contain instances. An instance is essentially a single DICOM file. A DICOM resource can refer to a patient, a study, a series or an instance.
+
+Any imaging study can be associated with multiple series of images. For example, any PET-CT scan will have at least two separate series, the CT series and the PET series. In general, a series can be thought of as either a single 2D image (standard radiography), a single 3D volume (CT scan), or a 2d+t cine sequence. However, a series may also include a PDF report or a structured report.
+
+Straight from the source since I couldn't have put it better:
+The actual pixel data of a given series is spread across multiple DICOM instances. This allows to split a single huge image (medical imaging commonly deals with 4GB images) into hundreds of small files of several megabytes, each of which can entirely fit in the computer memory, at the price of a severe redundancy of the medical information that is embedded within these files.
+
+For the above 4 DICOM resources, the DICOM standard specifies a module as a set of DICOM tags that describe these resources. For example, PatientName is part of the patient module and SeriesDescription is part of the series module.
+
+### DICOM Identifiers
+The DICOM standard specifies DICOM tags that allow to index each single DICOM resource:
+
+-   Patients are indexed with  `PatientID  (0x0010,  0x0020)`  (part of the patient module).
+-   Studies are indexed with  `StudyInstanceUID  (0x0020,  0x000d)`  (part of the study module).
+-   Series are indexed with  `SeriesInstanceUID  (0x0020,  0x000e)`  (part of the series module).
+-   Instances are indexed with  `SOPInstanceUID  (0x0008,  0x0018)`  (part of the SOP module).
+
+The DICOM standard orders _StudyInstanceUID_, _SeriesInstanceUID_ and _SOPInstanceUID_ to be globally unique. 
+
+Importantly, even if the  _PatientID_  must be unique inside a given hospital, it is not guaranteed to be globally unique. This means that different patients imaged in different hospitals might share the same  _PatientID_. For this reason, you should always browse from the study level (and not from the patient level) as soon as you deal with an application that handles patients from different hospitals.
+
+Also, the patient module is not always meaningful. For instance, think of when emergency imaging needs to be done and the system might not have information for the imaged patient. In such cases,  an unique  `AccessionNumber  (0x0008,  0x0050)`  is associated with the imaging study and the patient module is injected later in the PACS once information is available.

@@ -1,19 +1,35 @@
 # Jobs
-# VP of Global Communications
-- company: Springfield International Human Rights Outreach
-  position: VP of Global Communications
-  duration: Oct, 2013 &mdash; Present
-  summary: Write about your core competencies in one or two sentences describing your position. If you held the position for a long time, it could be a longer section, including a couple bullet points	<ul class="resume-item-list"><li>A project you are proud of</li><li>Another awesome project</li><li>or a team or department you worked with</li></ul>
+# Implementation Lead - Qure.ai
+- company: <a href='https://qure.ai/' target='_blank'>Qure.ai</a>
+  position: Implementation Lead
+  duration: October 2020 &mdash; May 2021
+  summary: |
+    <a>
+    <p>Working on improving several of their products and getting them implemented seamlessly amongst various healthcare and medical workflows of clients.</p>
+    In my time there, I worked on:
+    <ul>
+      <li>Working on their various backend services that serve RESTful APIs.</li>
+      <li>Developing and designing information and operational support systems for internal use by the organization.</li>
+      <li>Liasing with business teams to develop said informational systems.</li>
+      <li>Communicating with clients to gauge their requirements and plan the best possible integration method that provides least resistance to their medical workflow.<li>
+      <li>Writing APIs in an agile manner to cater to the various HIS/RIS (Hospital/Radiology Information Systems) clients use</li>
+      <li>Working with various PACS-systems.</li>
+      <li>Working extensively with the DICOM standard to communicate with client systems.</li>
+    </ul>
 
-# Director of Digital Stratgy
-- company: United Nations Human Rights Council
-  position: Director of Digital Strategy
-  duration:  Jun, 2010 &mdash; Sept, 2013
-  summary: If your stint was shorter, feel free to be brief and just call out the most meaningful points of your role. Be concise, and be meaninful. The person reading just needs enough to want to talk to you more about your experience.
+# Fullstack Developer, Vunet
+- company: <a href='https://www.vunetsystems.com/' target='_blank'>Vunet Systems</a>
+  position: Fullstack Developer
+  duration: August 2020 &mdash; October 2020
+  summary: |
+    <p>Worked on improvements to their AI-based analytics platform VuSmartMaps.</p>
+    <ul>
+      <li>Worked on the design and development for the Alerts and Events module for VuSmartMaps using React.JS.</li>
+    </ul>
 
 
-# Communications Coordinator
-- company: Springfield Women & Children's Center
-  position: Communications Coordinator
-  duration:   Jun, 2008  &mdash; May, 2010
-  summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
+# CSRE
+- company: <a href='https://www.csre.iitb.ac.in/' target='_blank'>IIT Bombay, CSRE</a>
+  position: Development Intern
+  duration:   July 2019 &mdash; March 2020
+  summary: <p>Developing and researching Unmanned Aerial Systems used for Geographic Information Systems under the guidance of Professor Surya Durbha at Centre of Studies in Resources Engineering, IIT Bombay.</p>

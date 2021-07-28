@@ -1,16 +1,33 @@
 # Projects
-# uncomment the urls if you wish to display them, and add your own URL
 
-# jazznotes.io
-- project: jazznotes.io
-  role: Founder & Primary Developer
-  duration: 2012 &mdash; Present
-  # url: "#"
-  description: Jazz Notes is an open source node/ember app that helps you keep track of your music compositions and new ideas.
+- project: Story Generation using Neural Networks
+  duration: 2019
+  url: "https://github.com/mlndshh/Hierarchical-Story-Generation-Using-Neural-Networks"
+  description: Theme based Hierarchical Story Generation using a user provided prompt fed to a Seq2Seq Model.
 
 # Springfield Community Outreach Group
-- project: Springfield Community Outreach Group
-  role: Co-Founder & Organizer
-  duration: 2007 &mdash; Present
-  # url: "#"
-  description: SCOG is a local monthly meetup in Springfield where we share opportunities to volunteer in the community and organize support for families and neighborhoods in need of assistance that the community can provide.
+- project: Callshastra - Call Center Sentimental Analysis
+  role: Codeshastra 4.0 - Winner
+  duration: 2018
+  url: "https://github.com/mlndshh/CallShastra"
+  description: |
+    <ul>
+      <li>Callshastra is a web-based application which analyses calls that take place at a call center and generates useful data, to rate call center executives.
+      <li>This application was created by our team during a 24-hour intercollege hackathon ‘Codeshastra 4.0’, securing the 1st place.</li>
+    </ul>
+
+
+- project: Slack Clone
+  duration: 2021
+  url: "https://github.com/mlndshh/slack-clone"
+  description: |
+    Created a React-based Slack Clone, <a target='_blank' href='https://slack-clone-b8422.web.app/'>live here</a>.
+    Uses the following:
+    <ul>
+      <li>React</li>
+      <li>Redux</li>
+      <li>React Router</li>
+      <li>Material UI</li>
+      <li>Styled Components</li>
+      <li>React Firebase Hooks</li>
+    </ul>
