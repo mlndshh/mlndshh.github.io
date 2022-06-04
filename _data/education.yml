@@ -5,8 +5,16 @@
   year: 2021-2022
   awards:
    - award: 3.95/4.00 CGPA
-  summary: >
+  summary: |
     Courses taken:
+    <ul>
+      <li>Advanced Algorithms</li>
+      <li>Secure Distributed Systems</li>
+      <li>Neural Networks: A Modern Introduction</li>
+      <li>System Defense and Test</li>
+      <li>Game Programming</li>
+      <li>Fixing Social Media</li>
+    </ul>
 
 - degree: Bachelor of Engineering &mdash; Computer Engineering
   uni: D. J. Sanghvi College of Engineering
